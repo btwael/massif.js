@@ -25,12 +25,13 @@ var Massifjs = {
         // extracts snapshots
         object.snapshots = [];
         var snapshotMatch;
-        while((snapshotMatch = this.getRegex().exec(source)) != null) {
+        var loopFeatureFunc = function(feature, i) {
+            snapshot[feature] = parseInt(snapshotMatch[i + 2]);
+        };
+        while((snapshotMatch = this.getRegex().exec(source)) !== null) {
             var snapshot = {};
-            snapshot["snapshot"] = parseInt(snapshotMatch[1]);
-            this.SNAPSHOT_FEATURES.forEach(function(feature, i) {
-                snapshot[feature] = snapshotMatch[i + 1];
-            });
+            snapshot.snapshot = parseInt(snapshotMatch[1]);
+            this.SNAPSHOT_FEATURES.forEach(loopFeatureFunc);
             object.snapshots.push(snapshot);
         }
         return object;
@@ -38,6 +39,3 @@ var Massifjs = {
 };
 
 module.exports = Massifjs;
-
-fs = require("fs");
-console.log(Massifjs.parse(fs.readFileSync("/Users/btwael/btwael/btwael/SuperString/cmake-build-debug/test/massif.out.2953", "utf8")));
