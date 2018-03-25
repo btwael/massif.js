@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html ng-app="MassifVisualizer">
+    <head>
+        <meta charset="utf-8" />
+        <title>Massif.js Online Visualizer</title>
+
+        <!-- styles -->
+        <link rel="stylesheet" type="text/css" href="./vendor/bootstrap.v4.0.0.min.css" />
+        <link rel="stylesheet" type="text/css" href="./styles/style.css" />
+
+        <!-- scripts -->
+        <script type="text/javascript" src="./vendor/chart.v2.7.2.min.js"></script>
+        <script type="text/javascript" src="./vendor/angularjs.v1.6.9.min.js"></script>
+        <script type="text/javascript" src="./scripts/massifjs.js"></script>
+        <script type="text/javascript" src="./scripts/script.js"></script>
+    </head>
+    <body ng-controller="MassifVisualizeController as massifVis">
+        <nav class="navbar navbar-light bg-light">
+            <div class="container">
+                <span class="navbar-brand mb-0 h1">Massif.js</span>
+                <div id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://github.com/btwael/massif.js">Github</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="container" style="margin-bottom: 60px">
+            <div class="mt-5">
+                <div class="lead" style="text-align: center;">Parse and visualize memory consumption analyzed and outputed by <a href="http://valgrind.org/docs/manual/ms-manual.html" target="_blank">Valgrind Massif</a> in your browser using <a href="https://github.com/btwael/massif.js">Massif.js</a>.</div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-12 row">
+                    <textarea class="col-12" ng-model="massifVis.source" placeholder="(paste the content of Valgrind Massif output file here)"></textarea>
+                    
+                </div>
+                <div class="pt-3 pb-3">
+                    <button type="button" class="btn btn-primary" ng-click="massifVis.process()">Visualize</button>
+                </div>
+                <div class="col-12 row" id="chart-container">
+                    <canvas class="col-12" id="chart"></canvas>
+                </div>
+            </div>
+        </div>
+        <footer class="footer" style="text-align: center;">
+            © 2018 <a href="https://github.com/btwael">Boutglay Wael</a> and <a href="https://github.com/btwael/massif.js/graphs/contributors">contributors</a>
+        </footer>
+    </body>
+</html>
