@@ -12,8 +12,6 @@ Massif.js is an online tool to visualize memory consumption analyzed and ouputed
 
 For missing feature or found bug, don't forget to open an issue or send your pull request.
 
-You can also support us via [Patreon](https://www.patreon.com/btwael).
-
 ## LICENCE
 
 Massif.js is licensed under the MIT License.
